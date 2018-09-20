@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Postal</string>
+    <string name="string_inicio">Inicio</string>
+    <string name="string_rotas">Rotas</string>
+    <string name="string_user">Perfil</string>
 </resources>

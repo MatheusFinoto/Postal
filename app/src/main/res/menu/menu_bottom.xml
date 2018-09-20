@@ -4,11 +4,14 @@
 
     <item
         android:id="@+id/item_home"
-        android:title="Inicio" />
+        android:title="@string/string_inicio"
+        android:icon="@drawable/outline_home_black_48"/>
     <item
         android:id="@+id/item_rotas"
-        android:title="Rotas" />
+        android:title="@string/string_rotas"
+        android:icon="@drawable/outline_directions_black_48"/>
     <item
         android:id="@+id/item_perfil"
-        android:title="Perfil" />
+        android:title="@string/string_user"
+        android:icon="@drawable/outline_person_outline_black_48"/>
 </menu>
