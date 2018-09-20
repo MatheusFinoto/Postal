@@ -1,4 +1,4 @@
-package postal.fisan.com.postal;
+package postal.fisan.com.postal.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import postal.fisan.com.postal.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText txtEmail, txtSenha;

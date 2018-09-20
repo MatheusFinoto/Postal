@@ -1,7 +1,9 @@
-package postal.fisan.com.postal;
+package postal.fisan.com.postal.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import postal.fisan.com.postal.R;
 
 public class IndexActivity extends AppCompatActivity {
 

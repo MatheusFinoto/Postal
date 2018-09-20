@@ -1,4 +1,4 @@
-package postal.fisan.com.postal;
+package postal.fisan.com.postal.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import postal.fisan.com.postal.R;
 
 public class MainActivity extends AppCompatActivity {
 
