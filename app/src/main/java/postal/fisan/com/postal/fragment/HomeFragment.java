@@ -1,6 +1,7 @@
 package postal.fisan.com.postal.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import postal.fisan.com.postal.R;
+import postal.fisan.com.postal.activity.AddEntregaActivity;
 import postal.fisan.com.postal.adapter.EntregasAdapter;
 import postal.fisan.com.postal.modal.Entregas;
 
@@ -73,8 +75,8 @@ public class HomeFragment extends Fragment {
         mbuttom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapter = new EntregasAdapter(getActivity(), ent);
-                listView.setAdapter(adapter);
+               Intent intent = new Intent(getContext(), AddEntregaActivity.class);
+               startActivity(intent);
             }
         });
 

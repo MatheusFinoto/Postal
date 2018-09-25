@@ -1,15 +1,11 @@
 package postal.fisan.com.postal.activity;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,7 +15,7 @@ import postal.fisan.com.postal.fragment.PerfilFragment;
 import postal.fisan.com.postal.modal.Entregas;
 
 
-public class IndexActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
@@ -34,7 +30,7 @@ public class IndexActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_index);
+        setContentView(R.layout.activity_main);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.m_bottombar);
         frameLayout = (FrameLayout) findViewById(R.id.m_frame);
 
