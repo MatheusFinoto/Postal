@@ -14,10 +14,12 @@
         android:text="HOME" />
 
     <ListView
+        android:padding="16dp"
         android:id="@+id/lv_itens"
         android:layout_below="@+id/txtHOME"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
     </ListView>
 

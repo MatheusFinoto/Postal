@@ -7,6 +7,7 @@ public class Entregas {
     private String horaInicio;
     private double localLong;
     private double localLat;
+    private Integer status;
 
     public Entregas() {
         this.localEntrega = localEntrega;
@@ -15,6 +16,7 @@ public class Entregas {
         this.horaInicio = horaInicio;
         this.localLong = localLong;
         this.localLat = localLat;
+        this.status = status;
     }
 
     public String getLocalEntrega() {
@@ -63,5 +65,13 @@ public class Entregas {
 
     public void setLocalLat(double localLat) {
         this.localLat = localLat;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

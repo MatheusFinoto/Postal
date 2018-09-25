@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,13 +41,20 @@ public class EntregasAdapter extends ArrayAdapter<Entregas> {
             TextView endereco = (TextView) view.findViewById(R.id.txtEndereco);
             TextView cep = (TextView) view.findViewById(R.id.txtCEP);
             TextView hora = (TextView) view.findViewById(R.id.txtHoraInicio);
+            ImageView imagestatus = (ImageView) view.findViewById(R.id.imageView_status);
 
             Entregas entrega = entregas.get(position);
             localEntrega.setText(entrega.getLocalEntrega());
             endereco.setText(entrega.getEndereco());
             cep.setText(entrega.getCep());
             hora.setText(entrega.getHoraInicio());
-            Log.d("ENTREGA", entrega.toString());
+            int sta = entrega.getStatus();
+            switch (sta){
+                case 0: imagestatus.setImageResource(R.drawable.boxboxopenxxxhdpi);
+                break;
+                case 1: imagestatus.setImageResource(R.drawable.boxboxativo2xxxhdpi);
+                break;
+            }
         }
         return view;
     }

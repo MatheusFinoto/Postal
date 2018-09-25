@@ -41,8 +41,6 @@ public class IndexActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         perfilFragment = new PerfilFragment();
 
-
-
         setFragment(homeFragment);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,7 +48,6 @@ public class IndexActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case  R.id.item_home:
-                        Toast.makeText(IndexActivity.this, "", Toast.LENGTH_SHORT).show();
                         setFragment(homeFragment);
                         return  true;
                     case  R.id.item_rotas:
@@ -62,7 +59,6 @@ public class IndexActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void setFragment(android.support.v4.app.Fragment fragment) {

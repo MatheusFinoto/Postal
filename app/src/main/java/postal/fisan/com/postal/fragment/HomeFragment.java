@@ -4,9 +4,14 @@ package postal.fisan.com.postal.fragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,7 +26,7 @@ import postal.fisan.com.postal.modal.Entregas;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment {
 
     private ArrayList<Entregas> ent;
     private ArrayAdapter adapter;
@@ -40,6 +45,10 @@ public class HomeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        listView = view.findViewById(R.id.lv_itens);
+        mbuttom = view.findViewById(R.id.btn_add);
+
         ent = new ArrayList<>();
 
         entregas = new Entregas();
@@ -47,12 +56,19 @@ public class HomeFragment extends Fragment{
         entregas.setEndereco("Rua do centro 435");
         entregas.setCep("14700,050");
         entregas.setHoraInicio("11:50");
+        entregas.setStatus(0);
         ent.add(entregas);
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        entregas = new Entregas();
+        entregas.setLocalEntrega("Casa do Luis");
+        entregas.setEndereco("Rua do centro 435");
+        entregas.setCep("14700,050");
+        entregas.setHoraInicio("11:50");
+        entregas.setStatus(0);
+        ent.add(entregas);
 
-        listView = view.findViewById(R.id.lv_itens);
-        mbuttom = view.findViewById(R.id.btn_add);
+        adapter = new EntregasAdapter(getActivity(), ent);
+        listView.setAdapter(adapter);
 
         mbuttom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +78,26 @@ public class HomeFragment extends Fragment{
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), "UM TOQUE CURTO", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        // Inflate the layout for this fragment
-
-
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Entregas entrega = ent.get(i);
+                entrega.setStatus(1);
+                Toast.makeText(getActivity(), "Finalizada", Toast.LENGTH_SHORT).show();
+                adapter = new EntregasAdapter(getActivity(), ent);
+                listView.setAdapter(adapter);
+                return true;
+            }
+        });
         return view;
     }
+
 
 }
