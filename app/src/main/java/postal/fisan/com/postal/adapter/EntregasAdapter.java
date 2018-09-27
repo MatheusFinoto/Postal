@@ -37,10 +37,10 @@ public class EntregasAdapter extends ArrayAdapter<Entregas> {
 
             view = inflater.inflate(R.layout.lista_entregas, parent, false);
 
-            TextView localEntrega = (TextView) view.findViewById(R.id.txtLocalEntrega);
-            TextView endereco = (TextView) view.findViewById(R.id.txtEndereco);
-            TextView cep = (TextView) view.findViewById(R.id.txtCEP);
-            TextView hora = (TextView) view.findViewById(R.id.txtHoraInicio);
+            TextView localEntrega = (TextView) view.findViewById(R.id.lblLocalEntrega);
+            TextView endereco = (TextView) view.findViewById(R.id.lblEndereco);
+            TextView cep = (TextView) view.findViewById(R.id.lblCEP);
+            TextView hora = (TextView) view.findViewById(R.id.lblHoraInicio);
             ImageView imagestatus = (ImageView) view.findViewById(R.id.imageView_status);
 
             Entregas entrega = entregas.get(position);
