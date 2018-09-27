@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="CEP:"
-                android:inputType="textPostalAddress" />
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -86,7 +86,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/ll_addEntrega"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:scrollbars="none">
 
     </ListView>
 

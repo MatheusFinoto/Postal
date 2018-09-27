@@ -49,6 +49,9 @@ public class HomeFragment extends Fragment {
     private Entregas entregas;
     private LinearLayout linearLayout;
 
+    private EditText txtLocalEntrega, txtEndereco, txtCEP;
+    private Button btnSalEntrega, btnCanEntrega;
+
     public HomeFragment() {
 
         // Required empty public constructor
@@ -60,7 +63,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         listView = view.findViewById(R.id.lv_itens);
         mbuttom = view.findViewById(R.id.btn_add);
-
+        txtLocalEntrega = view.findViewById(R.id.txtLocEntrega);
+        txtEndereco = view.findViewById(R.id.txtEnd);
+        txtCEP = view.findViewById(R.id.txtCEP);
+        btnSalEntrega = view.findViewById(R.id.btn_salvaEntrega);
+        btnCanEntrega= view.findViewById(R.id.btn_canEntrega);
 
         SimpleDateFormat dateFormat_hora = new SimpleDateFormat("HH:mm:ss");
 
@@ -74,22 +81,38 @@ public class HomeFragment extends Fragment {
 
         ent = new ArrayList<>();
 
-        mbuttom.setOnClickListener(new View.OnClickListener() {
+        btnSalEntrega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                entregas = new Entregas();
+                if (!txtLocalEntrega.getText().toString().equals("") && !txtEndereco.getText().toString().equals("")) {
+                    entregas = new Entregas();
 
-                entregas.setLocalEntrega("Matheus");
-                entregas.setEndereco("Casa do Matheus");
-                entregas.setCep("14700050   ");
-                entregas.setHoraInicio(hora_atual);
-                entregas.setStatus(0);
-                ent.add(entregas);
+                    entregas.setLocalEntrega(txtLocalEntrega.getText().toString());
+                    entregas.setEndereco(txtEndereco.getText().toString());
+                    entregas.setCep(txtCEP.getText().toString());
+                    entregas.setHoraInicio(hora_atual);
+                    entregas.setStatus(0);
+                    ent.add(entregas);
 
-                adapter = new EntregasAdapter(getContext(), ent);
-                listView.setAdapter(adapter);
-                /*Intent intent = new Intent(getContext(), AddEntregaActivity.class);
-                startActivity(intent);*/
+                    adapter = new EntregasAdapter(getContext(), ent);
+                    listView.setAdapter(adapter);
+
+                    txtLocalEntrega.setText("");
+                    txtEndereco.setText("");
+                    txtCEP.setText("");
+                }else {
+                    Toast.makeText(getContext(), "Digite um Local para entrega", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        btnCanEntrega.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtLocalEntrega.setText("");
+                txtEndereco.setText("");
+                txtCEP.setText("");
             }
         });
 
