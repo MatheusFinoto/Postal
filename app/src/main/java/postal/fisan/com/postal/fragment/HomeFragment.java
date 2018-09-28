@@ -1,19 +1,10 @@
 package postal.fisan.com.postal.fragment;
 
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,9 +22,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import postal.fisan.com.postal.R;
-import postal.fisan.com.postal.activity.AddEntregaActivity;
 import postal.fisan.com.postal.adapter.EntregasAdapter;
-import postal.fisan.com.postal.modal.Entregas;
+import postal.fisan.com.postal.model.Entregas;
+import postal.fisan.com.postal.preferencias.CustomAplication;
 
 
 /**
@@ -69,6 +60,12 @@ public class HomeFragment extends Fragment {
         btnSalEntrega = view.findViewById(R.id.btn_salvaEntrega);
         btnCanEntrega= view.findViewById(R.id.btn_canEntrega);
 
+        txtLocalEntrega.setVisibility(View.GONE);
+        txtEndereco.setVisibility(View.GONE);
+        txtCEP.setVisibility(View.GONE);
+        btnSalEntrega.setVisibility(View.GONE);
+        btnCanEntrega.setVisibility(View.GONE);
+
         SimpleDateFormat dateFormat_hora = new SimpleDateFormat("HH:mm:ss");
 
         Date data = new Date();
@@ -81,10 +78,22 @@ public class HomeFragment extends Fragment {
 
         ent = new ArrayList<>();
 
+        mbuttom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtLocalEntrega.setVisibility(View.VISIBLE);
+                txtEndereco.setVisibility(View.VISIBLE);
+                txtCEP.setVisibility(View.VISIBLE);
+                btnSalEntrega.setVisibility(View.VISIBLE);
+                btnCanEntrega.setVisibility(View.VISIBLE);
+            }
+        });
+
         btnSalEntrega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!txtLocalEntrega.getText().toString().equals("") && !txtEndereco.getText().toString().equals("")) {
+
                     entregas = new Entregas();
 
                     entregas.setLocalEntrega(txtLocalEntrega.getText().toString());
@@ -94,12 +103,18 @@ public class HomeFragment extends Fragment {
                     entregas.setStatus(0);
                     ent.add(entregas);
 
-                    adapter = new EntregasAdapter(getContext(), ent);
+                    adapter = new EntregasAdapter(getActivity(), ent);
                     listView.setAdapter(adapter);
 
                     txtLocalEntrega.setText("");
                     txtEndereco.setText("");
                     txtCEP.setText("");
+
+                    txtLocalEntrega.setVisibility(View.GONE);
+                    txtEndereco.setVisibility(View.GONE);
+                    txtCEP.setVisibility(View.GONE);
+                    btnSalEntrega.setVisibility(View.GONE);
+                    btnCanEntrega.setVisibility(View.GONE);
                 }else {
                     Toast.makeText(getContext(), "Digite um Local para entrega", Toast.LENGTH_SHORT).show();
                 }

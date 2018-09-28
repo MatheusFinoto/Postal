@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import postal.fisan.com.postal.R;
 import postal.fisan.com.postal.fragment.HomeFragment;
 import postal.fisan.com.postal.fragment.PerfilFragment;
-import postal.fisan.com.postal.modal.Entregas;
+import postal.fisan.com.postal.model.Entregas;
 
 
 public class MainActivity extends AppCompatActivity {
